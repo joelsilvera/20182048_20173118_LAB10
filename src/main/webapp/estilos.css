@@ -1,0 +1,45 @@
+.cuadrado{
+    width: 450px;
+    height: 450px;
+    background-color: black;
+    position: absolute;
+    left: 450px;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("fondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: sans-serif;
+}
+.form-login{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    justify-content: center;
+    text-align: center;
+    margin-top: 7%;
+    margin-left: 25%;
+    margin-right: 25%;
+    background: #131212;
+    border-radius: 5px;
+
+}
+.login-container{
+    display: block;
+    margin-top: 7%;
+    margin-right: 25%;
+    margin-left: 25%;
+    flex-direction: column;
+    padding: 4%;
+
+}

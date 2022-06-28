@@ -15,7 +15,6 @@ public class ServletPrincipal extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("a") == null ? "inicio" : request.getParameter("a");
         DaoPrincipal daoPrincipal = new DaoPrincipal();
-
         switch (action){
             case "inicio" -> {
                 RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
