@@ -22,23 +22,21 @@ public class ServletPrincipal extends HttpServlet {
                 view.forward(request, response);
             }
             case "listarViajes" -> {
-                String id = request.getParameter("id");
-                ArrayList<BeanViaje> listaViajes = daoPrincipal.listarViajes(Integer.parseInt(id));
+                String codigoPucp = request.getParameter("id");
+                ArrayList<BeanViaje> listaViajes = daoPrincipal.listarViajes(codigoPucp);
                 request.setAttribute("lista",listaViajes);
                 RequestDispatcher view = request.getRequestDispatcher("/includes/listaDeViajes.jsp");
                 view.forward(request, response);
             }
             case "borrarViaje" -> {
-                String id1Str = request.getParameter("id1");
-                String id2Str = request.getParameter("id2");
-                int id1 = Integer.parseInt(id1Str);
-                int id2 = Integer.parseInt(id2Str);
-                daoPrincipal.borrarViaje(id1);
-                response.sendRedirect(request.getContextPath() + "/ServletPrincipal?a=listarViajes&id="+id2);
+                String idViaje = request.getParameter("id1");
+                String codigoPucp = request.getParameter("id2");
+                daoPrincipal.borrarViaje(idViaje);
+                response.sendRedirect(request.getContextPath() + "/ServletPrincipal?a=listarViajes&id="+codigoPucp);
             }
             case "crearViaje" -> {
-                String idStr = request.getParameter("id");
-                request.setAttribute("idStr",idStr);
+                String codigoPucp = request.getParameter("id");
+                request.setAttribute("codigoPucp",codigoPucp);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("includes/nuevoViaje.jsp");
                 requestDispatcher.forward(request, response);
             }
@@ -54,11 +52,10 @@ public class ServletPrincipal extends HttpServlet {
         String action = request.getParameter("a") == null ? "inicio" : request.getParameter("a");
         switch (action){
             case "buscarPorCiudad" -> {
-                String idStr = request.getParameter("id");
-                int id = Integer.parseInt(idStr);
+                String codigoPucp = request.getParameter("id");
                 String textoBuscar = request.getParameter("textoBuscar");
                 try {
-                    request.setAttribute("lista", daoPrincipal.buscarPorIdCiudad(id,textoBuscar));
+                    request.setAttribute("lista", daoPrincipal.buscarPorIdCiudad(codigoPucp,textoBuscar));
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -69,7 +66,7 @@ public class ServletPrincipal extends HttpServlet {
 
 
             case "guardarViaje" -> {
-                String idStr = request.getParameter("id");
+                String codigoPucp = request.getParameter("id");
                 String fechaViaje = request.getParameter("fechaViaje");
                 String fechaReserva = request.getParameter("fechaReserva");
                 String ciudadOrigen = request.getParameter("ciudadOrigen");
@@ -79,13 +76,12 @@ public class ServletPrincipal extends HttpServlet {
                 String costoTotalStr = request.getParameter("costoTotal");
 
                 try {
-                    int id = Integer.parseInt(idStr);
                     int numBoletos = Integer.parseInt(numBoletosStr);
                     double costoTotal = Double.parseDouble(costoTotalStr);
 
-                    daoPrincipal.crearViaje(id, fechaViaje, fechaReserva, ciudadOrigen, ciudadDestino, seguro, numBoletos, costoTotal);
+                    daoPrincipal.crearViaje(codigoPucp, fechaViaje, fechaReserva, ciudadOrigen, ciudadDestino, seguro, numBoletos, costoTotal);
 
-                    response.sendRedirect(request.getContextPath() + "/ServletPrincipal?a=listarViajes&id="+id);
+                    response.sendRedirect(request.getContextPath() + "/ServletPrincipal?a=listarViajes&id="+codigoPucp);
 
                 } catch (NumberFormatException e) {
                     System.out.println("error al parsear");

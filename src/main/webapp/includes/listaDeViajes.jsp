@@ -5,7 +5,7 @@
 <% ArrayList<BeanViaje> listaViajes = (ArrayList<BeanViaje>) request.getAttribute("lista");%>
 
 
-<% int id=3;
+<% String codigoPucp = "20137525";
     String nombre = "Josue";
     String apellido = "Lopez";
     double costoTotal = 1650;
@@ -130,7 +130,7 @@
 
             <!--BARRA DE BUSQUEDA O FILTRAR -->
             <div class="tabla">
-                <form method="post" action="<%=request.getContextPath()%>/ServletPrincipal?a=buscarPorCiudad&id=<%=id%>">
+                <form method="post" action="<%=request.getContextPath()%>/ServletPrincipal?a=buscarPorCiudad&id=<%=codigoPucp%>">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Filtrar por ciudad"
                                aria-label="Filtrar por ciudad" aria-describedby="button-addon2"
@@ -140,7 +140,7 @@
                 </form>
 
                 <!--BOTON DE AGREGAR NUEVO VIAJE -->
-                <a href="<%=request.getContextPath()%>/ServletPrincipal?a=crearViaje&id=<%=id%>" class="btn btn-warning ms-auto">Agregar nuevo viaje</a>
+                <a href="<%=request.getContextPath()%>/ServletPrincipal?a=crearViaje&id=<%=codigoPucp%>" class="btn btn-warning ms-auto">Agregar nuevo viaje</a>
                 <p> </p>
                 <!---------------------------------->
 
@@ -168,7 +168,7 @@
                             <td><%=viaje.getNumeroBoletos()%></td>
                             <td>S/<%=viaje.getCostoTotal()%></td>
                             <td><a class="btn btn-warning ms-auto">Editar</a></td>
-                            <td><a href="<%=request.getContextPath()%>/ServletPrincipal?a=borrarViaje&id1=<%=viaje.getIdViajes()%>&id2=<%=viaje.getUsuario_idUsuario()%>"
+                            <td><a href="<%=request.getContextPath()%>/ServletPrincipal?a=borrarViaje&id1=<%=viaje.getIdViajes()%>&id2=<%=viaje.getUsuario_codigoPucp()%>"
                                    class="btn btn-danger ms-auto">Eliminar</a></td>
                         </tr>
                         <%}%>

@@ -1,8 +1,8 @@
 package Beans;
 
 public class BeanViaje {
-    private int idViajes;
-    private int Usuario_idUsuario;
+    private String idViajes;
+    private String usuario_codigoPucp;
     private String fechaViaje;
     private String fechaReserva;
     private String ciudadOrigen;
@@ -67,19 +67,20 @@ public class BeanViaje {
         this.costoTotal = costoTotal;
     }
 
-    public int getIdViajes() {
+
+    public String getIdViajes() {
         return idViajes;
     }
 
-    public void setIdViajes(int idViajes) {
+    public void setIdViajes(String idViajes) {
         this.idViajes = idViajes;
     }
 
-    public int getUsuario_idUsuario() {
-        return Usuario_idUsuario;
+    public String getUsuario_codigoPucp() {
+        return usuario_codigoPucp;
     }
 
-    public void setUsuario_idUsuario(int usuario_idUsuario) {
-        Usuario_idUsuario = usuario_idUsuario;
+    public void setUsuario_codigoPucp(String usuario_codigoPucp) {
+        this.usuario_codigoPucp = usuario_codigoPucp;
     }
 }

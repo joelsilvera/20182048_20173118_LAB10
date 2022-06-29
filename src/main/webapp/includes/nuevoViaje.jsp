@@ -1,6 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% String idStr = (String) request.getAttribute("idStr");%>
+<% String codigoPucp = (String) request.getAttribute("codigoPucp");%>
 
 <html>
     <head>
@@ -71,7 +71,7 @@
                 <table class="table table-dark table-transparent table-hover">
 
                     <h1 class='mb-3' style="color:white;">Agregar nuevo viaje</h1>
-                    <form method="POST" action="<%=request.getContextPath()%>/ServletPrincipal?a=guardarViaje&id=<%=idStr%>">
+                    <form method="POST" action="<%=request.getContextPath()%>/ServletPrincipal?a=guardarViaje&id=<%=codigoPucp%>">
                         <div class="mb-3">
                             <label for="fechaViaje" class="form-label" style="color:white;">Fecha de viaje</label>
                             <input type="text" class="form-control" name="fechaViaje" id="fechaViaje">
@@ -100,7 +100,7 @@
                             <label for="costoTotal" class="form-label" style="color:white;">Costo total</label>
                             <input type="text" class="form-control" name="costoTotal" id="costoTotal">
                         </div>
-                        <a href="<%=request.getContextPath()%>//ServletPrincipal?a=buscarPorCiudad&id=<%=Integer.parseInt(idStr)%>" class="btn btn-danger">Regresar</a>
+                        <a href="<%=request.getContextPath()%>//ServletPrincipal?a=buscarPorCiudad&id=<%=codigoPucp%>" class="btn btn-danger">Regresar</a>
                         <button type="submit" class="btn btn-warning">Crear Viaje</button>
                     </form>
 
