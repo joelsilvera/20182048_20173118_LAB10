@@ -4,7 +4,7 @@ const inputs = document.querySelectorAll('#formulario input');
 const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s[a-zA-Z0-9À-ÿ\u00f1\u00d1]+)*$/, // Letras y espacios, pueden llevar acentos.
     apellido: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s[a-zA-Z0-9À-ÿ\u00f1\u00d1]+)*$/, // Letras y espacios, pueden llevar acentos.
-    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,14}$/,
+    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&+-])([A-Za-z\d$@$!%*?&+-]|[^ ]){8,20}$/,
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     especialidad: /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s[a-zA-Z0-9À-ÿ\u00f1\u00d1]+)*$/,
     edad: /^(1[8-9]|2[0-9])$/, // 7 a 14 numeros.

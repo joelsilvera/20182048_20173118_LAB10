@@ -68,7 +68,14 @@
                 <div class="formulario__grupo" id="grupo__especialidad">
                     <label for="especialidad" class="formulario__label">Especialidad</label>
                     <div class="formulario__grupo-input">
-                        <input type="text" class="formulario__input" name="especialidad" id="especialidad" placeholder="" required>
+                        <!-- <input type="text" class="formulario__input" name="especialidad" id="especialidad" placeholder="" required> -->
+                        <select name="especialidad" id="especialidad" class="formulario__input">
+                            <option value="Ingeniería de las Telecomunicaciones">Ingeniería de las Telecomunicaciones</option>
+                            <option value="Ingeniería Biomédica">Ingeniería Biomédica</option>
+                            <option value="Ingeniería Mecatrónica">Ingeniería Mecatrónica</option>
+                            <option value="Ingeniería Electrónica">Ingeniería Electrónica</option>
+                            <option value="Ingeniería Informática">Ingeniería Informática</option>
+                        </select>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
                     <p class="formulario__input-error">Seleccione una especialidad.</p>
