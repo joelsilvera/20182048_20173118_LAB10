@@ -44,6 +44,7 @@ public class LoginServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String action = request.getParameter("a") == null ? "listar" : request.getParameter("a");
         DaoUsuario daoUsuario = new DaoUsuario();
+        HttpSession session = request.getSession();
 
         String codigo_pucp;
         String nombre;
@@ -74,12 +75,12 @@ public class LoginServlet extends HttpServlet {
 
                 BeanUsuario cuentaUsuario = daoUsuario.validarUsuarioPassword(username, password);
                 if (cuentaUsuario != null) { //existe usuario y password
-                    HttpSession session = request.getSession();
                     session.setAttribute("usuarioLogueado", cuentaUsuario);
                     session.setMaxInactiveInterval(60 * 10);
 
-                    response.sendRedirect(request.getContextPath() + "/ServletPrincipal");
+                    response.sendRedirect(request.getContextPath() + "/includes/listaDeViajes.jsp");
                 } else {
+                    session.setAttribute("indicador","error");
                     response.sendRedirect(request.getContextPath() + "/LoginServlet?error");
                 }
 
