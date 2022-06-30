@@ -142,6 +142,18 @@
                 <!--BOTON DE AGREGAR NUEVO VIAJE -->
                 <a href="<%=request.getContextPath()%>/ServletPrincipal?a=crearViaje&id=<%=codigoPucp%>" class="btn btn-warning ms-auto">Agregar nuevo viaje</a>
                 <p> </p>
+
+                <!--MENSAJE DE BORRADO EXITOSO -->
+                <% if (request.getParameter("msg") != null) {%>
+                <div class="alert alert-success" role="alert"><%=request.getParameter("msg")%>
+                </div>
+                <% session.removeAttribute("msg"); %>
+                <% } %>
+                <% if (request.getParameter("err") != null) {%>
+                <div class="alert alert-danger" role="alert"><%=request.getParameter("err")%>
+                </div>
+                <% } %>
+                <p> </p>
                 <!---------------------------------->
 
                 <table class="table table-dark table-transparent table-hover">

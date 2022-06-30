@@ -1,5 +1,7 @@
 package Servlets;
 
+import Beans.BeanDatosUtiles;
+import Beans.BeanUsuario;
 import Beans.BeanViaje;
 import Daos.DaoPrincipal;
 
@@ -22,16 +24,34 @@ public class ServletPrincipal extends HttpServlet {
                 view.forward(request, response);
             }
             case "listarViajes" -> {
+                //RECIBE USUARIO
                 String codigoPucp = request.getParameter("id");
+                //OBTIENE DATOS UTILES
+                BeanDatosUtiles datosUtiles = daoPrincipal.obtenerDatosUtiles(codigoPucp);
                 ArrayList<BeanViaje> listaViajes = daoPrincipal.listarViajes(codigoPucp);
+                //ENVIA DATOS UTILES
+                request.setAttribute("datosUtiles",datosUtiles);
                 request.setAttribute("lista",listaViajes);
                 RequestDispatcher view = request.getRequestDispatcher("/includes/listaDeViajes.jsp");
                 view.forward(request, response);
+
+                /*
+                //RECIBE USUARIO
+                String codigoPucp = request.getParameter("id");
+                //OBTIENE DATOS UTILES
+                ArrayList<BeanViaje> listaViajes = daoPrincipal.listarViajes(codigoPucp);
+                //ENVIA DATOS UTILES
+                request.setAttribute("lista",listaViajes);
+                RequestDispatcher view = request.getRequestDispatcher("/includes/listaDeViajes.jsp");
+                view.forward(request, response);
+                 */
             }
             case "borrarViaje" -> {
                 String idViaje = request.getParameter("id1");
                 String codigoPucp = request.getParameter("id2");
                 daoPrincipal.borrarViaje(idViaje);
+                HttpSession session = request.getSession();
+                session.setAttribute("msg", "Viaje borrado exitosamente");
                 response.sendRedirect(request.getContextPath() + "/ServletPrincipal?a=listarViajes&id="+codigoPucp);
             }
             case "crearViaje" -> {

@@ -1,4 +1,7 @@
-Beans\BeanViaje.class
+Beans\BeanUsuario.class
 Daos\DaoBase.class
 Servlets\ServletPrincipal.class
 Daos\DaoPrincipal.class
+Daos\DaoUsuario.class
+Servlets\LoginServlet.class
+Beans\BeanViaje.class

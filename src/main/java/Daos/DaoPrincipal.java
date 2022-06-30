@@ -1,5 +1,6 @@
 package Daos;
 
+import Beans.BeanDatosUtiles;
 import Beans.BeanViaje;
 
 import java.sql.*;
@@ -236,6 +237,46 @@ public class DaoPrincipal {
         }
 
     }
+
+    public BeanDatosUtiles obtenerDatosUtiles(String codigoPucp) {
+        BeanDatosUtiles datosUtiles = null;
+
+        String user = "root";
+        String pass = "root";
+        String url = "jdbc:mysql://localhost:3306/lab10?serverTimezone=America/Lima";
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        String sql = "SELECT usuario_codigoPucp, nombreUsuario, apellidoUsuario,sum(costoTotal) \n" +
+                "FROM viajes v inner join usuario u on (v.usuario_codigoPucp = u.codigoPucp)\n" +
+                "where usuario_codigoPucp = ?;";
+
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement pstmt = connection.prepareStatement(sql);) {
+
+            pstmt.setString(1, codigoPucp);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+
+                if (rs.next()) {
+                    datosUtiles = new BeanDatosUtiles();
+                    datosUtiles.setCodigoPucp(rs.getString(1));
+                    datosUtiles.setNombre(rs.getString(2));
+                    datosUtiles.setApellidos(rs.getString(3));
+                    datosUtiles.setCostoTotal(rs.getDouble(4));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return datosUtiles;
+    }
+
 
 
 }

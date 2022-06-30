@@ -1,6 +1,8 @@
 package Daos;
 
+import Beans.BeanDatosUtiles;
 import Beans.BeanUsuario;
+import Beans.BeanViaje;
 
 import java.sql.*;
 import java.util.ArrayList;
