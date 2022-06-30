@@ -1,10 +1,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Beans.BeanViaje" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="textoBuscar" scope="request" type="java.lang.String" class="java.lang.String" />
 <% ArrayList<BeanViaje> listaViajes = (ArrayList<BeanViaje>) request.getAttribute("lista");%>
 
 
-<% int id=3;
+<% String codigoPucp = "20137525";
     String nombre = "Josue";
     String apellido = "Lopez";
     double costoTotal = 1650;
@@ -90,7 +91,7 @@
             <!--ESTE ES EL NAVBAR -->
 
             <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
-                <a class="navbar-brand" href="<%=request.getContextPath()%>//ServletPrincipal?a=listarViajes&id=3">Mis viajes</a>
+                <a class="navbar-brand" href="<%=request.getContextPath()%>/ServletPrincipal?a=listarViajes&id=3">Mis viajes</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -126,18 +127,22 @@
                     <h1 class='text-light'>PROGRAMACION DE VIAJES</h1>
                 </div>
             </div>
+
+            <!--BARRA DE BUSQUEDA O FILTRAR -->
             <div class="tabla">
-                <form method="post" action="<%=request.getContextPath()%>/ServletPrincipal?a=buscar">
+                <form method="post" action="<%=request.getContextPath()%>/ServletPrincipal?a=buscarPorCiudad&id=<%=codigoPucp%>">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Filtrar por "
-                               aria-label="Filtrar por " aria-describedby="button-addon2"
-                               name="textoBuscar" value="Ingrese texto" />
+                        <input type="text" class="form-control" placeholder="Filtrar por ciudad"
+                               aria-label="Filtrar por ciudad" aria-describedby="button-addon2"
+                               name="textoBuscar" value="<%=textoBuscar%>" />
                         <button class="btn btn-warning" type="button" id="button-addon2">Filtrar</button>
                     </div>
                 </form>
 
-                <a class="btn btn-warning ms-auto">Agregar nuevo viaje</a>
+                <!--BOTON DE AGREGAR NUEVO VIAJE -->
+                <a href="<%=request.getContextPath()%>/ServletPrincipal?a=crearViaje&id=<%=codigoPucp%>" class="btn btn-warning ms-auto">Agregar nuevo viaje</a>
                 <p> </p>
+                <!---------------------------------->
 
                 <table class="table table-dark table-transparent table-hover">
                     <thead>
@@ -163,7 +168,8 @@
                             <td><%=viaje.getNumeroBoletos()%></td>
                             <td>S/<%=viaje.getCostoTotal()%></td>
                             <td><a class="btn btn-warning ms-auto">Editar</a></td>
-                            <td><a class="btn btn-danger ms-auto">Eliminar</a></td>
+                            <td><a href="<%=request.getContextPath()%>/ServletPrincipal?a=borrarViaje&id1=<%=viaje.getIdViajes()%>&id2=<%=viaje.getUsuario_codigoPucp()%>"
+                                   class="btn btn-danger ms-auto">Eliminar</a></td>
                         </tr>
                         <%}%>
                     </tbody>
