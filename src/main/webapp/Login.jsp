@@ -1,3 +1,4 @@
+<jsp:useBean id="indicador" scope="session" type="java.lang.String" class="java.lang.String"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,35 +14,37 @@
         <title></title>
     </head>
     <body >
-         <div class="form-login">
+         <div class="form-login" style="margin:50px auto; width:500px;">
 
              <div class="login-container" style="margin-top: 3%;">
                  <div class="login-header">
-                     <img src="logo.png"  style="width: 150px"  class="rounded float-start" alt="...">
+                     <img src="logo.png"  style="width: 210px"  class="centrado" alt="...">
 
                  </div>
-                 <br>
-                 <br>
-                 <br>
-                 <br>
-                 <br>
-                 <br>
+
                  <form method="POST" action="<%=request.getContextPath()%>/LoginServlet">
                      <div class="mb-3" style="margin-top: 2%;">
                          <h1 style="color: white">Bienvenido televiajero</h1>
                      </div>
 
 
-                     <input type="text" placeholder="Usuario" >
+                     <input type="email" placeholder="Usuario" name="username" class="form-control">
                      <br>
                      <br>
-                     <input type="password" placeholder="Contraseña" >
+                     <input type="password" placeholder="Contraseña" name="password" class="form-control">
                      <br>
                      <br>
                      <div class="btn-container">
                          <button type="submit" class="btn btn-outline-primary" >Ingresar</button>
                      </div>
                  </form>
+                 <%if (session.getAttribute("indicador").equals("error")){%>
+                 </br>
+                 <div class="text-danger nb-2">
+                     Error en usuario o contraseña!!!
+                 </div>
+                 <%session.removeAttribute("indicador");%>
+                 <%}%>
                  <div class="register-details-container">
                      <p class="register" style="color:white;">¿No tienes una cuenta? Regístrate haciendo click</p>
                      <a href="NuevoUsuario.jsp" class="btn-detail-register" style="color: rgb(8, 164, 247);">AQUI</a>

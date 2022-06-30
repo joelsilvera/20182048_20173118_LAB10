@@ -17,6 +17,25 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher requestDispatcher;
         RequestDispatcher view =request.getRequestDispatcher("Login.jsp");
         view.forward(request,response);
+        String action = request.getParameter("a") != null ? request.getParameter("a") : "login";
+
+        HttpSession session = request.getSession();
+
+        switch (action){
+            case "login":
+                BeanUsuario usuario = (BeanUsuario) session.getAttribute("usuarioLogueado");
+                if(usuario != null && usuario.getCodigo_pucp() != 0){
+                    response.sendRedirect(request.getContextPath());
+                }else{
+                    RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+                    rd.forward(request, response);
+                }
+                break;
+            case "logout":
+                session.invalidate();
+                response.sendRedirect(request.getContextPath());
+                break;
+        }
 
     }
 
@@ -33,7 +52,6 @@ public class LoginServlet extends HttpServlet {
         String correo_pucp;
         String especialidad;
         String contrasenia;
-        String contrasenha_confirmada;
 
         switch (action){
             case "p_validacion" ->{
@@ -47,6 +65,23 @@ public class LoginServlet extends HttpServlet {
                 daoUsuario.crearUsuario(codigo_pucp, nombre,apellido,edad,correo_pucp,especialidad,contrasenia
                 );
                 response.sendRedirect(request.getContextPath() + "/LoginServlet");
+
+            }
+            case "listar" ->{
+                String username = request.getParameter("username");
+                String password = request.getParameter("password");
+
+
+                BeanUsuario cuentaUsuario = daoUsuario.validarUsuarioPassword(username, password);
+                if (cuentaUsuario != null) { //existe usuario y password
+                    HttpSession session = request.getSession();
+                    session.setAttribute("usuarioLogueado", cuentaUsuario);
+                    session.setMaxInactiveInterval(60 * 10);
+
+                    response.sendRedirect(request.getContextPath() + "/ServletPrincipal");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/LoginServlet?error");
+                }
 
             }
 

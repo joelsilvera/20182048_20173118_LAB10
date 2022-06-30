@@ -3,19 +3,28 @@ package Beans;
 import java.io.InputStream;
 
 public class BeanUsuario {
-    private String nombre_completo;
+    private String nombre;
+    private String apellidos;
     private int edad;
     private int codigo_pucp;
     private String correo_pucp;
     private String especialidad;
     private String contrasenia;
 
-    public String getNombre_completo() {
-        return nombre_completo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_completo(String nombre_completo) {
-        this.nombre_completo = nombre_completo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public int getEdad() {

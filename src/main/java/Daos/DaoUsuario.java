@@ -1,11 +1,11 @@
 package Daos;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import Beans.BeanUsuario;
 
-public class DaoUsuario {
+import java.sql.*;
+import java.util.ArrayList;
+
+public class DaoUsuario extends DaoBase {
     private static String user = "root";
     private static String pass = "root";
     private static String url = "jdbc:mysql://localhost:3306/lab10?serverTimezone=America/Lima";
@@ -37,6 +37,61 @@ public class DaoUsuario {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+    }
+    public BeanUsuario validarUsuarioPassword(String username, String password) {
+
+        BeanUsuario beanUsuario = null;
+
+        String sql = "select * from usuario where correoPUCP = ? and password = sha2(?,256);";
+
+        try (Connection connection = this.getConection();
+             PreparedStatement pstmt = connection.prepareStatement(sql);) {
+
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+                if (rs.next()) {
+                    beanUsuario = this.obtenerUsuario(rs.getInt(1));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return beanUsuario;
+    }
+    public BeanUsuario obtenerUsuario(int codigoUsuario) {
+
+        BeanUsuario usuario = null;
+        ArrayList<BeanUsuario> listaUsuario = new ArrayList<>();
+        String sql = "SELECT * FROM usuario e WHERE codigoPucp = ?";
+
+        try (Connection conn = this.getConection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+
+            pstmt.setInt(1, codigoUsuario);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+
+                if (rs.next()) {
+                    usuario = new BeanUsuario();
+                    usuario.setCodigo_pucp(rs.getInt(1));
+                    usuario.setNombre(rs.getString(2));
+                    usuario.setApellidos(rs.getString(3));
+                    usuario.setEdad(rs.getInt(4));
+                    usuario.setCorreo_pucp(rs.getString(5));
+                    usuario.setEspecialidad(rs.getString(6));
+
+
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return usuario;
     }
 
 }
