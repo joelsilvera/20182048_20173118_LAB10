@@ -40,6 +40,18 @@ public class ServletPrincipal extends HttpServlet {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("includes/nuevoViaje.jsp");
                 requestDispatcher.forward(request, response);
             }
+            case "editarViaje" -> {
+                String idViaje = request.getParameter("id1");
+                String codigoPucp = request.getParameter("id2");
+                BeanViaje viaje = daoPrincipal.buscarViaje(idViaje);
+                if (viaje != null) {
+                    request.setAttribute("viaje", viaje);
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("includes/editarViaje.jsp");
+                    requestDispatcher.forward(request, response);
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/index");
+                }
+            }
         }
 
     }
@@ -90,8 +102,38 @@ public class ServletPrincipal extends HttpServlet {
                 }
 
             }
+            case "actualizarViaje" -> {
+                BeanViaje viaje = leerParametrosRequest(request);
+
+                daoPrincipal.actualizarViaje(viaje);
+                response.sendRedirect(request.getContextPath() + "/ServletPrincipal?a=listarViajes&id="+viaje.getUsuario_codigoPucp());
+            }
 
 
         }
+    }
+
+    public BeanViaje leerParametrosRequest(HttpServletRequest request) {
+        String idViajes = request.getParameter("idViajes");
+        String usuario_codigoPucp = request.getParameter("usuario_codigoPucp");
+        String fechaViaje = request.getParameter("fechaViaje");
+        String fechaReserva = request.getParameter("fechaReserva");
+        String ciudadOrigen = request.getParameter("ciudadOrigen");
+        String ciudadDestino = request.getParameter("ciudadDestino");
+        String seguro = request.getParameter("seguro");
+        String numBoletos = request.getParameter("numBoletos");
+        String costoTotal = request.getParameter("costoTotal");
+
+        BeanViaje viaje = new BeanViaje();
+        viaje.setIdViajes(idViajes);
+        viaje.setUsuario_codigoPucp(usuario_codigoPucp);
+        viaje.setFechaViaje(fechaViaje);
+        viaje.setFechaReserva(fechaReserva);
+        viaje.setCiudadOrigen(ciudadOrigen);
+        viaje.setCiudadDestino(ciudadDestino);
+        viaje.setSeguro(seguro);
+        viaje.setNumeroBoletos(Integer.parseInt(numBoletos));
+        viaje.setCostoTotal(Double.parseDouble(costoTotal));
+        return viaje;
     }
 }
