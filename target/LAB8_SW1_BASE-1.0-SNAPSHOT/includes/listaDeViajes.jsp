@@ -167,7 +167,8 @@
                             <td><%=viaje.getSeguro()%></td>
                             <td><%=viaje.getNumeroBoletos()%></td>
                             <td>S/<%=viaje.getCostoTotal()%></td>
-                            <td><a class="btn btn-warning ms-auto">Editar</a></td>
+                            <td><a href="<%=request.getContextPath()%>/ServletPrincipal?a=editarViaje&id1=<%=viaje.getIdViajes()%>&id2=<%=viaje.getUsuario_codigoPucp()%>"
+                                   class="btn btn-warning ms-auto">Editar</a></td>
                             <td><a href="<%=request.getContextPath()%>/ServletPrincipal?a=borrarViaje&id1=<%=viaje.getIdViajes()%>&id2=<%=viaje.getUsuario_codigoPucp()%>"
                                    class="btn btn-danger ms-auto">Eliminar</a></td>
                         </tr>
