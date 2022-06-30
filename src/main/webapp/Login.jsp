@@ -44,7 +44,7 @@
                  </form>
                  <div class="register-details-container">
                      <p class="register">¿No tienes una cuenta? Regístrate haciendo click</p>
-                     <a href="" class="btn-detail-register" style="color: rgb(100, 19, 176);">Aquí</a>
+                     <a href="NuevoUsuario.jsp" class="btn-detail-register" style="color: rgb(100, 19, 176);">Aquí</a>
                  </div>
              </div>
          </div>
