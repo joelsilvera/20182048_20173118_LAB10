@@ -44,8 +44,9 @@ public class LoginServlet extends HttpServlet {
                 especialidad = request.getParameter("especialidad");
                 correo_pucp = request.getParameter("correo");
                 contrasenia = request.getParameter("password");
-
-
+                daoUsuario.crearUsuario(codigo_pucp, nombre,apellido,edad,correo_pucp,especialidad,contrasenia
+                );
+                response.sendRedirect(request.getContextPath() + "/LoginServlet");
 
             }
 

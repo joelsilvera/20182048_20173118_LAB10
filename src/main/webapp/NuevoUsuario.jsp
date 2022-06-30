@@ -41,7 +41,7 @@
                         <input type="password" class="formulario__input" name="password" id="password" required>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
-                    <p class="formulario__input-error">La contraseña debe contar con una mayúscula, un número y un caracter especial</p>
+                    <p class="formulario__input-error">La contraseña debe contar con una mayúscula, un número y un caracter especial.(mínimo 8 caracteres)</p>
                 </div>
 
                 <!-- Grupo: Contraseña 2 -->
@@ -71,7 +71,7 @@
                         <input type="text" class="formulario__input" name="especialidad" id="especialidad" placeholder="" required>
                         <i class="formulario__validacion-estado fas fa-times-circle"></i>
                     </div>
-                    <p class="formulario__input-error">El telefono solo puede contener 9 dígitos.</p>
+                    <p class="formulario__input-error">Seleccione una especialidad.</p>
                 </div>
                 <div class="formulario__grupo" id="grupo__edad">
                     <label for="edad" class="formulario__label">Edad</label>
