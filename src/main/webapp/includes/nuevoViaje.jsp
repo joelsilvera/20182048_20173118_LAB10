@@ -90,7 +90,14 @@
                         </div>
                         <div class="mb-3">
                             <label for="seguro" class="form-label" style="color:white;">Empresa de seguro</label>
-                            <input type="text" class="form-control" name="seguro" id="seguro">
+                            <!--<input type="text" class="form-control" name="seguro" id="seguro">-->
+                            <select name="seguro" id="seguro" class="form-control">
+                                <option value="Rimac">Rimac</option>
+                                <option value="Pacifico">Pacifico</option>
+                                <option value="La Positiva">La Positiva</option>
+                                <option value="Seguro Internacional">Seguro Internacional</option>
+                                <option value="Otro">Otro</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="numBoletos" class="form-label" style="color:white;">Numero de boletos</label>

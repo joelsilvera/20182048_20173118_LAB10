@@ -93,7 +93,14 @@
                         </div>
                         <div class="mb-3">
                             <label for="seguro" class="form-label" style="color:white;">Empresa de seguro</label>
-                            <input type="text" class="form-control" name="seguro" id="seguro" value="<%=viaje.getSeguro()%>">
+                            <!--<input type="text" class="form-control" name="seguro" id="seguro" >-->
+                            <select name="seguro" id="seguro" class="form-control">
+                                <option value="Rimac" <%=viaje.getSeguro().equals("Rimac") ? "selected" : "" %>>Rimac</option>
+                                <option value="Pacifico" <%=viaje.getSeguro().equals("Pacifico") ? "selected" : "" %>>Pacifico</option>
+                                <option value="La Positiva" <%=viaje.getSeguro().equals("La Positiva") ? "selected" : "" %>>La Positiva</option>
+                                <option value="Seguro Internacional" <%=viaje.getSeguro().equals("Seguro Internacional") ? "selected" : "" %>>Seguro Internacional</option>
+                                <option value="Otro" <%=viaje.getSeguro().equals("Otro") ? "selected" : "" %>>Otro</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="numBoletos" class="form-label" style="color:white;">Numero de boletos</label>
