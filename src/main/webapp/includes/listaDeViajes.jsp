@@ -4,8 +4,11 @@
 <%@ page import="Beans.BeanDatosUtiles" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="textoBuscar" scope="request" type="java.lang.String" class="java.lang.String" />
+<jsp:useBean id="usuarioLogueado" class="Beans.BeanUsuario"
+             scope="session" type="Beans.BeanUsuario"/>
 <% ArrayList<BeanViaje> listaViajes = (ArrayList<BeanViaje>) request.getAttribute("lista");%>
 <% BeanDatosUtiles datosUtiles = (BeanDatosUtiles) request.getAttribute("datosUtiles");%>
+
 
 
 <% String codigoPucp = datosUtiles.getCodigoPucp();
@@ -118,7 +121,7 @@
                 </div>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="navbar-brand" href="<%=request.getContextPath()%>/ServletPrincipal">Cerar Sesion</a></li>
+                        <li class="nav-item"><a class="navbar-brand" href="<%=request.getContextPath()%>/LoginServlet?a=logout">Cerar Sesion</a></li>
                     </ul>
                 </div>
 

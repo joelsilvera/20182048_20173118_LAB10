@@ -75,10 +75,17 @@ public class LoginServlet extends HttpServlet {
 
                 BeanUsuario cuentaUsuario = daoUsuario.validarUsuarioPassword(username, password);
                 if (cuentaUsuario != null) { //existe usuario y password
-                    session.setAttribute("id", String.valueOf(cuentaUsuario.getCodigo_pucp()));
-                    String id = String.valueOf(cuentaUsuario.getCodigo_pucp());
-                    session.setMaxInactiveInterval(60 * 10);
-                    response.sendRedirect(request.getContextPath() + "/ServletPrincipal?a=listarViajes&id="+id);
+                    if(!cuentaUsuario.getEspecialidad().equals("Ingeniería de las Telecomunicaciones")){
+                        session.setAttribute("indicador","diferenteEspecialidad");
+                        response.sendRedirect(request.getContextPath() + "/LoginServlet?diferenteEspecialidad");
+                    }else{
+                        session.setAttribute("id", String.valueOf(cuentaUsuario.getCodigo_pucp()));
+                        System.out.println(cuentaUsuario.getCodigo_pucp());
+                        String id = String.valueOf(cuentaUsuario.getCodigo_pucp());
+                        session.setMaxInactiveInterval(60 * 10);
+                        response.sendRedirect(request.getContextPath() + "/ServletPrincipal?a=listarViajes&id="+id);
+                    }
+
 
                 } else {
                     session.setAttribute("indicador","error");

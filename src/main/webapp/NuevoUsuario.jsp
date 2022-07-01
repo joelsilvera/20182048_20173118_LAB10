@@ -70,7 +70,7 @@
                     <div class="formulario__grupo-input">
                         <!-- <input type="text" class="formulario__input" name="especialidad" id="especialidad" placeholder="" required> -->
                         <select name="especialidad" id="especialidad" class="formulario__input">
-                            <option value="Ingeniería de las Telecomunicaciones">Ingeniería de las Telecomunicaciones</option>
+                            <option value="Ingenieria de las Telecomunicaciones">Ingeniería de las Telecomunicaciones</option>
                             <option value="Ingeniería Biomédica">Ingeniería Biomédica</option>
                             <option value="Ingeniería Mecatrónica">Ingeniería Mecatrónica</option>
                             <option value="Ingeniería Electrónica">Ingeniería Electrónica</option>

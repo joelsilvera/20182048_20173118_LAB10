@@ -44,6 +44,11 @@
                      Error en usuario o contraseña!!!
                  </div>
                  <%session.removeAttribute("indicador");%>
+                 <%}else if (session.getAttribute("indicador").equals("diferenteEspecialidad")){%>
+                 <div class="text-danger nb-2">
+                     No pertenece al teleco
+                 </div>
+                 <%session.removeAttribute("indicador");%>
                  <%}%>
                  <div class="register-details-container">
                      <p class="register" style="color:white;">¿No tienes una cuenta? Regístrate haciendo click</p>

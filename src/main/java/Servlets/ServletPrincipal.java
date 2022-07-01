@@ -24,6 +24,7 @@ public class ServletPrincipal extends HttpServlet {
                 view.forward(request, response);
             }
             case "listarViajes" -> {
+
                 //RECIBE USUARIO
                 String codigoPucp = request.getParameter("id");
 
@@ -37,6 +38,7 @@ public class ServletPrincipal extends HttpServlet {
                 request.setAttribute("lista",listaViajes);
                 RequestDispatcher view = request.getRequestDispatcher("/includes/listaDeViajes.jsp");
                 view.forward(request, response);
+
 
 
             }
