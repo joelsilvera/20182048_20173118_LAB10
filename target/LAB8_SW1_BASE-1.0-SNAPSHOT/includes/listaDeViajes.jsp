@@ -1,14 +1,17 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Beans.BeanViaje" %>
+<%@ page import="Beans.BeanUsuario" %>
+<%@ page import="Beans.BeanDatosUtiles" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="textoBuscar" scope="request" type="java.lang.String" class="java.lang.String" />
 <% ArrayList<BeanViaje> listaViajes = (ArrayList<BeanViaje>) request.getAttribute("lista");%>
+<% BeanDatosUtiles datosUtiles = (BeanDatosUtiles) request.getAttribute("datosUtiles");%>
 
 
-<% String codigoPucp = "20137525";
-    String nombre = "Josue";
-    String apellido = "Lopez";
-    double costoTotal = 1650;
+<% String codigoPucp = datosUtiles.getCodigoPucp();
+    String nombre = datosUtiles.getNombre();
+    String apellido = datosUtiles.getApellidos();
+    double costoTotal = datosUtiles.getCostoTotal();
 %>
 
 
@@ -143,18 +146,7 @@
                 <a href="<%=request.getContextPath()%>/ServletPrincipal?a=crearViaje&id=<%=codigoPucp%>" class="btn btn-warning ms-auto">Agregar nuevo viaje</a>
                 <p> </p>
 
-                <!--MENSAJE DE BORRADO EXITOSO -->
-                <% if (request.getParameter("msg") != null) {%>
-                <div class="alert alert-success" role="alert"><%=request.getParameter("msg")%>
-                </div>
-                <% session.removeAttribute("msg"); %>
-                <% } %>
-                <% if (request.getParameter("err") != null) {%>
-                <div class="alert alert-danger" role="alert"><%=request.getParameter("err")%>
-                </div>
-                <% } %>
-                <p> </p>
-                <!---------------------------------->
+
 
                 <table class="table table-dark table-transparent table-hover">
                     <thead>

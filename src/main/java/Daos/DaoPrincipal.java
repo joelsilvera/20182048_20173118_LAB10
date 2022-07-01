@@ -239,6 +239,9 @@ public class DaoPrincipal {
     }
 
     public BeanDatosUtiles obtenerDatosUtiles(String codigoPucp) {
+
+        System.out.println(codigoPucp);
+
         BeanDatosUtiles datosUtiles = null;
 
         String user = "root";
@@ -251,9 +254,10 @@ public class DaoPrincipal {
             throw new RuntimeException(e);
         }
 
-        String sql = "SELECT usuario_codigoPucp, nombreUsuario, apellidoUsuario,sum(costoTotal) \n" +
-                "FROM viajes v inner join usuario u on (v.usuario_codigoPucp = u.codigoPucp)\n" +
-                "where usuario_codigoPucp = ?;";
+        String sql = "SELECT u.codigoPucp, nombreUsuario, apellidoUsuario, sum(costoTotal) \n" +
+                "                 FROM usuario u LEFT JOIN viajes v on (u.codigoPucp = v.usuario_codigoPucp ) \n" +
+                "                 where u.codigoPucp = ?;";
+
 
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              PreparedStatement pstmt = connection.prepareStatement(sql);) {
@@ -262,7 +266,7 @@ public class DaoPrincipal {
 
             try (ResultSet rs = pstmt.executeQuery();) {
 
-                if (rs.next()) {
+                while (rs.next()) {
                     datosUtiles = new BeanDatosUtiles();
                     datosUtiles.setCodigoPucp(rs.getString(1));
                     datosUtiles.setNombre(rs.getString(2));
@@ -274,9 +278,10 @@ public class DaoPrincipal {
             throw new RuntimeException(e);
         }
 
+        System.out.println(datosUtiles.getNombre());
+
         return datosUtiles;
     }
-
 
 
 }

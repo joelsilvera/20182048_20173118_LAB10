@@ -8,7 +8,7 @@
 <% BeanDatosUtiles datosUtiles = (BeanDatosUtiles) request.getAttribute("datosUtiles");%>
 
 
-<% String codigoPucp = "" + datosUtiles.getCodigoPucp() + "";
+<% String codigoPucp = datosUtiles.getCodigoPucp();
     String nombre = datosUtiles.getNombre();
     String apellido = datosUtiles.getApellidos();
     double costoTotal = datosUtiles.getCostoTotal();
