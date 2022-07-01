@@ -76,15 +76,15 @@
                         <input type="hidden" name="idViajes" value="<%=viaje.getIdViajes()%>"/>
                         <input type="hidden" name="usuario_codigoPucp" value="<%=viaje.getUsuario_codigoPucp()%>"/>
                         <div class="mb-3">
-                            <label for="fechaViaje" class="form-label" style="color:white;">Fecha de viaje</label>
+                            <label for="fechaViaje" class="form-label" style="color:white;">Fecha de viaje (AAAA-MM-DD)</label>
                             <input type="text" class="form-control" name="fechaViaje" id="fechaViaje" value="<%=viaje.getFechaViaje()%>">
                         </div>
                         <div class="mb-3">
-                            <label for="fechaReserva" class="form-label" style="color:white;">Fecha de reserva</label>
+                            <label for="fechaReserva" class="form-label" style="color:white;">Fecha de reserva (AAAA-MM-DD)</label>
                             <input type="text" class="form-control" name="fechaReserva" id="fechaReserva" value="<%=viaje.getFechaReserva()%>">
                         </div>
                         <div class="mb-3">
-                            <label for="ciudadOrigen" class="form-label" style="color:white;">Ciudad de origen</label>
+                            <label for="ciudadOrigen" class="form-label" style="color:white;">Ciudad de origen </label>
                             <input type="text" class="form-control" name="ciudadOrigen" id="ciudadOrigen" value="<%=viaje.getCiudadOrigen()%>">
                         </div>
                         <div class="mb-3">

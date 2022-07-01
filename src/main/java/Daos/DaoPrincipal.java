@@ -240,8 +240,6 @@ public class DaoPrincipal {
 
     public BeanDatosUtiles obtenerDatosUtiles(String codigoPucp) {
 
-        System.out.println(codigoPucp);
-
         BeanDatosUtiles datosUtiles = null;
 
         String user = "root";
@@ -277,8 +275,6 @@ public class DaoPrincipal {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-        System.out.println(datosUtiles.getNombre());
 
         return datosUtiles;
     }

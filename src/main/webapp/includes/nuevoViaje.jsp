@@ -73,11 +73,11 @@
                     <h1 class='mb-3' style="color:white;">Agregar nuevo viaje</h1>
                     <form method="POST" action="<%=request.getContextPath()%>/ServletPrincipal?a=guardarViaje&id=<%=codigoPucp%>">
                         <div class="mb-3">
-                            <label for="fechaViaje" class="form-label" style="color:white;">Fecha de viaje</label>
+                            <label for="fechaViaje" class="form-label" style="color:white;">Fecha de viaje (AAAA-MM-DD)</label>
                             <input type="text" class="form-control" name="fechaViaje" id="fechaViaje">
                         </div>
                         <div class="mb-3">
-                            <label for="fechaReserva" class="form-label" style="color:white;">Fecha de reserva</label>
+                            <label for="fechaReserva" class="form-label" style="color:white;">Fecha de reserva (AAAA-MM-DD)</label>
                             <input type="text" class="form-control" name="fechaReserva" id="fechaReserva">
                         </div>
                         <div class="mb-3">

@@ -24,7 +24,15 @@
         <title>MIS VIAJES</title>
         <style>
             body {
-                background-color: #131212
+                margin: 0;
+                padding: 0;
+                background-image: url("fondo2.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+                background-attachment: fixed;
+                background-size: cover;
+                font-family: sans-serif;
             }
             .container {
                 padding-right: 0 !important;
