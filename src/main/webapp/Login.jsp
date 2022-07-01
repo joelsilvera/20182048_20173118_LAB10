@@ -36,6 +36,8 @@
                      <br>
                      <div class="btn-container">
                          <button type="submit" class="btn btn-outline-primary" >Ingresar</button>
+                         <br>
+                         <br>
                      </div>
                  </form>
                  <%if (session.getAttribute("indicador").equals("error")){%>
@@ -51,15 +53,11 @@
                  <%session.removeAttribute("indicador");%>
                  <%}%>
                  <div class="register-details-container">
-                     <p class="register" style="color:white;">¿No tienes una cuenta? Regístrate haciendo click</p>
-                     <a href="NuevoUsuario.jsp" class="btn-detail-register" style="color: rgb(8, 164, 247);">AQUI</a>
+                     <a href="NuevoUsuario.jsp" class="btn-detail-register" style="color: rgb(8, 164, 247);">SOY NUEVO Y QUIERO REGISTRARME</a>
                  </div>
+                 <br>
              </div>
          </div>
-
-
-
-
 
     </body>
 </html>

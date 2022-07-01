@@ -4,8 +4,11 @@
 <%@ page import="Beans.BeanDatosUtiles" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="textoBuscar" scope="request" type="java.lang.String" class="java.lang.String" />
+<jsp:useBean id="usuarioLogueado" class="Beans.BeanUsuario"
+             scope="session" type="Beans.BeanUsuario"/>
 <% ArrayList<BeanViaje> listaViajes = (ArrayList<BeanViaje>) request.getAttribute("lista");%>
 <% BeanDatosUtiles datosUtiles = (BeanDatosUtiles) request.getAttribute("datosUtiles");%>
+
 
 
 <% String codigoPucp = datosUtiles.getCodigoPucp();
@@ -21,18 +24,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'/>
         <link rel="shortcut icon" href="<%=request.getContextPath()%>/static/airplaneshape_119680.ico" type="image/x-icon">
+        <link rel="stylesheet" type="text/css" href="estilos.css">
         <title>MIS VIAJES</title>
         <style>
             body {
-                margin: 0;
-                padding: 0;
-                background-image: url("fondo2.jpg");
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-position: center center;
-                background-attachment: fixed;
-                background-size: cover;
-                font-family: sans-serif;
+                background-color: #131212
             }
             .container {
                 padding-right: 0 !important;
@@ -102,31 +98,31 @@
             <!--ESTE ES EL NAVBAR -->
 
             <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
-                <a class="navbar-brand" href="<%=request.getContextPath()%>/ServletPrincipal?a=listarViajes&id=3">Mis viajes</a>
+                <a class="navbar-brand" href="<%=request.getContextPath()%>/ServletPrincipal?a=listarViajes&id=<%=codigoPucp%>">Mis viajes</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <%if(costoTotal<100){%>
-                        <li class="nav-item"><h6>STATUS: NORMAL</h6></li>
+                        <li class="nav-item" style="color:white;"><h6>STATUS: NORMAL</h6></li>
                         <%}else if(costoTotal<1000){%>
-                        <li class="nav-item"><h6>STATUS: SILVER</h6></li>
+                        <li class="nav-item" style="color:white;"><h6>STATUS: SILVER</h6></li>
                         <%}else if(costoTotal<10000){%>
-                        <li class="nav-item"><h6>STATUS: GOLD</h6></li>
+                        <li class="nav-item" style="color:white;"><h6>STATUS: GOLD</h6></li>
                         <%}else{%>
-                        <li class="nav-item"><h6>STATUS: PLATINUM</h6></li>
+                        <li class="nav-item" style="color:white;"><h6>STATUS: PLATINUM</h6></li>
                         <%}%>
                     </ul>
                 </div>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><h6>¡Bienvenido <%=nombre +  " " +apellido%> !</h6></li>
+                        <li class="nav-item" style="color:white;"><h6>¡Bienvenido <%=nombre +  " " +apellido%> !</h6></li>
                     </ul>
                 </div>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="navbar-brand" href="<%=request.getContextPath()%>/ServletPrincipal">Cerar Sesion</a></li>
+                        <li class="nav-item"><a class="navbar-brand" href="<%=request.getContextPath()%>/LoginServlet?a=logout">Cerar Sesion</a></li>
                     </ul>
                 </div>
 

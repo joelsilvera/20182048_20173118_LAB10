@@ -111,7 +111,7 @@ public class ServletPrincipal extends HttpServlet {
 
                 } catch (NumberFormatException e) {
                     System.out.println("error al parsear");
-                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ServletPrincipal?a=listarViajes&id="+codigoPucp);
                     requestDispatcher.forward(request, response);
                 }
 
